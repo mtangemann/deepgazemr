@@ -20,7 +20,7 @@ to clone this repository. However, you have to make sure that all dependencies
 listed in requirements.txt are satisfied.
 
 ```python
-model = torch.hub.load('mtangemann/deepgazemr', 'DeepGazeMR', pretrained=True)
+model = torch.hub.load('mtangemann/deepgazemr:v1', 'DeepGazeMR', pretrained=True)
 model.to(device)
 ```
 
