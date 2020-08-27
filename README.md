@@ -1,7 +1,7 @@
 # DeepGaze MR
 
-This repository provides the video saliency model *DeepGaze MR* as proposed
-in the following paper:
+This repository provides the video saliency model *DeepGaze MR* and the
+meta-benchmark proposed in the following paper:
 
 ```
 @InProceedings{tangemann2020,
@@ -86,6 +86,26 @@ prediction = model.forward(clip, center_bias=center_bias)
 
 iterator = model.predict(video, center_bias=center_bias)
 ```
+
+
+## Meta-Benchmark
+*DeepGaze MR* was used to create a meta benchmark based on the LEDOV and DIEM
+datasets. The meta benchmark consists of those frames where at least 1bit of
+explainable information was not explained by *DeepGaze MR*. The files in the
+`meta-benchmark` directory contain the frame indices of the meta benchmark as
+described in the paper.
+
+Each CSV file contains 3 columns named `video`, `frame` and `mask` for the
+video name, the frame number and whether the respective frame is included in
+the meta-benchmark (True=included, False=not included). Please note that we
+resampled the videos in the LEDOV dataset to 30Hz in our study. The given
+frame numbers refer to the resampled videos.
+
+To evaluate your model on this meta-benchmark, please first apply it to the
+full videos of the respective dataset. Then calculate the performances using
+regular image saliency metrics for those frames contained in the meta-benchmark.
+Final results are then obtained by first averaging the scores over frames,
+and then over videos.
 
 
 ## Contact
