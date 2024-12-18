@@ -239,4 +239,4 @@ class GaussianFilter1d(nn.Module):
         kernel = kernel / kernel.sum()
 
         # convolve input with gaussian kernel
-        return F.conv1d(x, kernel)
+        return F.conv2d(x, kernel)
